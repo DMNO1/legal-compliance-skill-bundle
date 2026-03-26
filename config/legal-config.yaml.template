@@ -1,0 +1,55 @@
+# 法律合规AI技能包 - 配置模板
+# 复制为 legal-config.yaml 并填入你的信息
+
+# 企业基本信息（用于生成合同/文档时自动填充）
+enterprise:
+  name: "你的企业名称"
+  legal_rep: "法定代表人姓名"
+  address: "企业注册地址"
+  phone: "联系电话"
+  email: "法务邮箱"
+  tax_id: "统一社会信用代码"
+
+# API配置
+api:
+  provider: "deepseek"  # deepseek / openai / zhipu
+  api_key: ""  # 填入你的API Key（可选，不填则使用本地知识库）
+  model: "deepseek-chat"
+  temperature: 0.3
+  max_tokens: 1024
+
+# 合同审查配置
+contract_review:
+  # 我方角色：party_a 或 party_b
+  my_role: "party_b"
+  # 关注的高风险条款类别
+  focus_categories:
+    - "违约责任"
+    - "知识产权"
+    - "免责条款"
+    - "合同解除"
+  # 风险评分阈值
+  risk_thresholds:
+    high: 15     # 高风险扣分
+    medium: 8    # 中风险扣分
+    low: 3       # 低风险扣分
+
+# 法律问答配置
+legal_qa:
+  # 优先使用LLM（需配置API key）
+  prefer_llm: true
+  # 回答语言
+  language: "zh-CN"
+  # 免责声明
+  disclaimer: "以上仅供参考，不构成法律意见。"
+
+# 合规检查配置
+compliance:
+  # 启用的合规检查模块
+  modules:
+    - "pipl"      # 个人信息保护法
+    - "labor"     # 劳动法
+    - "contract"  # 合同法
+    - "ip"        # 知识产权
+  # 数据出境阈值（个人信息数量）
+  cross_border_threshold: 1000000
